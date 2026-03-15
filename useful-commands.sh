@@ -18,4 +18,4 @@ kind delete cluster --name my-cluster
 
 kubectl cluster-info --context kind-my-cluster # Interact with the kind cluster using kubectl
 
-kubectl export logs ./logs # Export logs from the kind cluster to a local directory
+kind export logs ./logs # Export logs from the kind cluster to a local directory
