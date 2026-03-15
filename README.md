@@ -1,6 +1,6 @@
 # Kind
 
-To run K8s using docker containers - where each container is a k8s node
+Run Kubernetes locally in Docker containers, where each container is a Kubernetes node.
 
 [Documentation](https://kind.sigs.k8s.io)
 
