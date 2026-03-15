@@ -14,5 +14,5 @@ kubectl get nodes -o wide
 ```
 
 ```sh
-kind delete cluster --name my-cluster 
+kind delete cluster --name my-cluster
 ```
