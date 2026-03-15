@@ -1,0 +1,25 @@
+##############################################
+# Most common configuration for kind cluster #
+##############################################
+
+# four node (two workers - two control planes HA ) cluster config
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: my-cluster
+networking:
+  podSubnet: "10.244.0.0/16" # Default
+  serviceSubnet: "10.96.0.0/16" # Default
+nodes:
+  - role: control-plane
+    # Specify kubernetes version
+    image: kindest/node:v1.35.0@sha256:452d707d4862f52530247495d180205e029056831160e22870e37e3f6c1ac31f # (https://github.com/kubernetes-sigs/kind/releases)
+  - role: control-plane
+  - role: worker
+    image: kindest/node:v1.35.0@sha256:452d707d4862f52530247495d180205e029056831160e22870e37e3f6c1ac31f
+    extraPortMappings: # Map port 80 on the host to port 80 on the worker node to get traffic into the cluster
+      - containerPort: 80
+        hostPort: 80
+    extraMounts: # Mount local directory to the worker node
+      - hostPath: /path/to/local/directory # (With docker desktop check "File sharing" settings to allow access to the directory)
+        containerPath: /path/in/worker/node
+  - role: worker
