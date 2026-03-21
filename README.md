@@ -1,6 +1,6 @@
 # Kind
 
-Run Kubernetes locally in Docker containers, where each container is a Kubernetes node.
+To run K8s using docker containers - where each container is a k8s node
 
 [Documentation](https://kind.sigs.k8s.io)
 
@@ -14,5 +14,15 @@ kubectl get nodes -o wide
 ```
 
 ```sh
-kind delete cluster --name my-cluster
+kind delete cluster --name my-cluster 
 ```
+
+## Kubernetes Cloud Provider for KIND
+
+KIND doesn't offer capabilities for testing all the features that depend on cloud-providers, specifically the Load Balancers. `cloud-provider-kind` aims to fill this gap
+
+```sh
+sudo /opt/homebrew/bin/cloud-provider-kind
+```
+
+Will monitor all KIND clusters and `Services` with Type `LoadBalancer` and create corresponding LoadBalancer containers that will expose those Services.
